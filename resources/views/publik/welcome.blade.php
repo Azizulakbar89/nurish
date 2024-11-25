@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>SD NURISH</title>
+    <title>HOME - SD NURISH</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
-    <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
+    <link href="{{asset('assets1/img/favicon.jpg')}}" rel="icon">
+    <link href="{{asset('assets1/img/apple-touch-icon.jpg')}}" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -29,11 +29,12 @@
 
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
+
     <style>
-    /* Gaya umum untuk mobile nav */
+    /* Gaya umum untuk navbar mobile */
     #mobile-nav {
         display: none;
-        /* Sembunyikan secara default */
+        /* Sembunyikan navbar mobile secara default */
     }
 
     .mobile-nav-toggle {
@@ -48,55 +49,91 @@
         /* Tampilkan navbar desktop secara default */
     }
 
-    /* Media query untuk resolusi kecil (mobile view) */
+    /* Media query untuk tampilan mobile (max-width 1024px) */
     @media (max-width: 1024px) {
         #navmenu {
             display: none;
-            /* Sembunyikan navbar desktop */
+            /* Sembunyikan navbar desktop pada layar kecil */
         }
 
         #mobile-nav {
             display: block;
             /* Tampilkan navbar mobile */
-            background: #f8f9fa;
+            background: #ffffff;
             /* Warna latar belakang */
             padding: 0.5rem;
             position: absolute;
             top: 100%;
-            /* Posisi di bawah header */
             left: 0;
             right: 0;
             z-index: 1000;
             /* Pastikan di atas elemen lain */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         #mobile-nav ul {
             list-style: none;
             padding-left: 0;
+            margin: 0;
+            display: flex;
             flex-direction: column;
-            /* Susun item secara vertikal */
             align-items: flex-start;
+            border: none;
+            /* Hapus border */
         }
 
         #mobile-nav ul li {
             padding: 10px 14px;
-            /* Sesuaikan padding untuk item daftar */
             width: 100%;
+            border: none;
+            /* Hapus border */
         }
 
+        /* Dropdown di navbar mobile */
         #mobile-nav ul ul {
             display: none;
-            /* Sembunyikan dropdown secara default */
+            /* Sembunyikan submenu secara default */
         }
 
         #mobile-nav ul .dropdown:hover ul {
             display: block;
-            /* Tampilkan dropdown saat hover */
+            /* Tampilkan submenu saat hover */
+            padding-left: 10px;
         }
+
     }
 
-    /* Media query untuk tampilan landscape pada semua jenis iPad */
-    @media (max-width: 1366px) and (orientation: landscape) {
+    /* Media query untuk layar antara 1024px dan 1199px */
+    @media (min-width: 1020px) and (max-width: 1199px) {
+        #navmenu {
+            display: block;
+            /* Tampilkan navbar desktop */
+        }
+
+        #mobile-nav {
+            display: none;
+            /* Sembunyikan navbar mobile */
+        }
+
+        .navmenu ul {
+            display: flex;
+            list-style: none;
+            position: static;
+            padding: 10px 0;
+            margin: 0;
+            border-radius: 1px;
+            background-color: var(--nav-mobile-background-color);
+            border: none;
+            /* Hapus border */
+            overflow-y: auto;
+            transition: 0.3s;
+        }
+
+
+    }
+
+    /* Media query untuk layar desktop lebih besar dari 1199px */
+    @media (min-width: 1200px) {
         #navmenu {
             display: block;
             /* Tampilkan navbar desktop */
@@ -108,7 +145,7 @@
         }
     }
 
-    /* Media query untuk tampilan portrait pada semua jenis iPad */
+    /* Untuk iPad (max-width: 1366px, orientation: portrait) */
     @media (max-width: 1366px) and (orientation: portrait) {
         #navmenu {
             display: none;
@@ -121,21 +158,8 @@
         }
     }
 
-    /* Tambahan gaya untuk tampilan tablet (misal antara 768px - 1024px) */
-    @media (min-width: 768px) and (max-width: 1024px) {
-        #navmenu {
-            display: none;
-            /* Sembunyikan navbar desktop */
-        }
-
-        #mobile-nav {
-            display: block;
-            /* Tampilkan navbar mobile */
-        }
-    }
-
-    /* Media query untuk resolusi lebih besar dari 1024px */
-    @media (min-width: 1025px) {
+    /* Untuk iPad (max-width: 1366px, orientation: landscape) */
+    @media (max-width: 1366px) and (orientation: landscape) {
         #navmenu {
             display: block;
             /* Tampilkan navbar desktop */
@@ -146,9 +170,69 @@
             /* Sembunyikan navbar mobile */
         }
     }
+
+    /* Gaya untuk footer */
+
+
+    .footer-top {
+        padding: 20px;
+        /* Padding untuk bagian atas footer */
+    }
+
+    .footer-about {
+        margin-bottom: 20px;
+        /* Margin bawah untuk footer-about */
+    }
+
+    .footer-contact p {
+        margin: 5px 0;
+        /* Margin untuk paragraf di footer contact */
+        color: black;
+        /* Pastikan warna teks di footer contact hitam */
+    }
+
+    .social-links a {
+        color: darkgreen;
+        /* Warna ikon sosial menjadi hitam */
+        margin-right: 15px;
+        /* Margin kanan untuk ikon sosial */
+    }
+
+    .social-links a:hover {
+        color: #ffc107;
+        /* Warna saat hover pada ikon sosial */
+    }
+
+    .social-links i {
+        font-size: 14px;
+        /* Mengatur ukuran ikon (opsional) */
+        color: darkgreen;
+    }
+
+    .copyright {
+        margin-top: 20px;
+        /* Margin atas untuk bagian copyright */
+        color: black;
+        /* Warna teks copyright menjadi hitam */
+    }
+
+    .credits a {
+        color: black;
+        /* Warna tautan di bagian credits menjadi hitam */
+    }
+
+    .home {
+        background-color: #f8f9fa;
+        /* Ganti dengan warna latar belakang yang diinginkan */
+    }
+
+    .content h4 {
+        font-size: 1.5rem;
+        /* Ukuran font untuk subjudul */
+        margin-top: 20px;
+        /* Jarak atas subjudul */
+    }
     </style>
-
-
 
 </head>
 
@@ -178,9 +262,12 @@
         <div class="branding d-flex align-items-center">
             <div class="container position-relative d-flex align-items-center justify-content-between">
                 <a href="/" class="logo d-flex align-items-center me-auto">
-                    <h1 class="sitename">SD NU NURUL ISHLAH GRESIK</h1>
+                    <img src="{{asset('assets1/img/favicon.jpg')}}" alt="">
+                    <div class="text-container">
+                        <h1 class="sitename">SD NU NURUL ISHLAH GRESIK</h1>
+                        <p class="caption">Sekolah Berprestasi Mengaji Pasti</p>
+                    </div>
                 </a>
-
                 <nav id="navmenu" class="navmenu d-none d-lg-block">
                     <ul>
                         <li><a href="/" class="active">Home</a></li>
@@ -210,6 +297,7 @@
                 <i class="mobile-nav-toggle d-lg-none bi bi-list" onclick="toggleMobileMenu()"></i>
             </div>
         </div>
+
 
         <!-- Mobile Menu -->
         <nav id="mobile-nav" class="d-lg-none">
@@ -250,8 +338,6 @@
                     <img src="{{ asset('assets/img/hero-bg.jpg') }}" alt="">
                     <div class="container">
                         <h2>Selamat Datang, di SD NU Nurul Ishlah </h2>
-                        <h4>Sekolah Prestasi, Mengaji Pasti!</h4>
-                        <br></br>
                     </div>
                 </div><!-- End Carousel Item -->
                 @foreach ($fo->take(2) as $item)
@@ -275,88 +361,64 @@
         <section id="home" class="home section">
             <div class="container">
                 <div class="row gy-4 gx-5">
+                    @foreach ($kepsek->take(1) as $p)
                     <div class="col-lg-6 position-relative align-self-start" data-aos="fade-up" data-aos-delay="200">
-                        <img src="{{ asset('assets/img/about.jpg') }}" class="img-fluid" alt="">
+                        <img src="{{ asset('storage/gambar/'. $p->gambar) }}" class="img-fluid" alt="">
                     </div>
                     <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
                         <h2>Sambutan Kepala Sekolah</h2>
-                        <h5>Nama Kepala sekolah</h5>
-                        <p>isi sambutan</p>
-
+                        <h5>{{$p->namakep}}</h5>
+                        <p>{{$p->sambutan}}</p>
                     </div>
                 </div>
+                @endforeach
             </div>
         </section><!-- /About Section -->
-
-        <!-- <section id="services" class="services section">
-
-            <div class="container section-title" data-aos="fade-up">
-                <h2>Video Sekolah</h2>
-            </div>
-
-            <div class="container">
-
-                <div class="row gy-4">
-
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <x-embed url="https://www.youtube.com/watch?v=On2hMuv8QXY" class="img-fluid"
-                            style="max-width: 100%; max-height: 200px; width: auto; height: auto;" />
-                    </div>
-
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <x-embed url="https://www.youtube.com/watch?v=b_NeEkp0jlU" class="img-fluid"
-                            style="max-width: 100%; max-height: 200px; width: auto; height: auto;" />
-                    </div>
-
-                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-                        <x-embed url="https://www.youtube.com/watch?v=Z0GJ1ebtIl4" class="img-fluid"
-                            style="max-width: 100%; max-height: 200px; width: auto; height: auto;" />
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section> -->
 
         <!-- Stats Section -->
         <section id="stats" class="stats section light-background">
             <div class="container" data-aos="fade-up" data-aos-delay="100">
                 <div class="container section-title" data-aos="fade-up">
-                    <h2>Profil Fasilitas Sekolah</h2>
+                    <h2>Profil Sekolah</h2>
                 </div><!-- End Section Title -->
                 <div class="row gy-4">
-                    <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+                    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center">
                         <i class="fas fa-chalkboard-teacher"></i>
                         <div class="stats-item">
                             <span>{{ $gcount }}</span>
-                            <p>Guru</p>
+                            <h6>Guru</h6>
                         </div>
                     </div><!-- End Stats Item -->
-                    <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-                        <i class="fa-solid fa-baseball"></i>
-                        <div class="stats-item">
-                            <span>{{ $ecount }}</span>
-                            <p>Ekstrakurikuler</p>
-                        </div>
-                    </div><!-- End Stats Item -->
-                    <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
-                        <i class="fa-solid fa-people-arrows"></i>
-                        <div class="stats-item">
-                            <span>{{ $mcount }}</span>
-                            <p>Kerjasama Mitra</p>
-                        </div>
-                    </div><!-- End Stats Item -->
-                    <div class="col-lg-3 col-md-6 d-flex flex-column align-items-center">
+                    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center">
                         <i class="fas fa-award"></i>
                         <div class="stats-item">
                             <span>{{ $pcount }}</span>
-                            <p>Prestasi Tahunan</p>
+                            <h6>Prestasi Tahunan</h6>
+                        </div>
+                    </div><!-- End Stats Item -->
+                    <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center">
+                        <i class="fa-solid fa-baseball"></i>
+                        <div class="stats-item">
+                            <span>{{ $ecount }}</span>
+                            <h6>Ekstrakurikuler</h6>
                         </div>
                     </div><!-- End Stats Item -->
                 </div>
             </div>
         </section><!-- /Stats Section -->
+
+        <div class="chart-container">
+            <div class="chart">
+                {!! $chart1->container() !!}
+                <!-- Ganti dengan kode chart Anda -->
+            </div>
+            <div class="chart">
+                {!! $data->container() !!}
+            </div>
+            <div class="chart">
+                {!! $chart3->container() !!}
+            </div>
+        </div>
 
         <!-- Contact Section -->
         <section id="contact" class="contact section">
@@ -377,6 +439,15 @@
 
         </section><!-- /Contact Section -->
 
+        <script src="{{ $chart1->cdn() }}"></script>
+        {{ $chart1->script() }}
+        <script src="{{ $data->cdn() }}"></script>
+        {{ $data->script() }}
+        <script src="{{ $chart3->cdn() }}"></script>
+        {{ $chart3->script() }}
+
+        <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
     </main>
 
     <footer id="footer" class="footer light-background">
@@ -390,8 +461,8 @@
                     <div class="footer-contact pt-3">
                         <p>12, Jl. Dr. Wahidin Sudirohusodo No.24, Pedukuhan, Randuagung, Kec. Gresik, Kabupaten Gresik,
                             Jawa Timur 61121</p>
-                        <p class="mt-3"><strong>Phone:</strong> <span>+62 31-3984456 </span></p>
-                        <p><strong>Email:nurulishlahsdnu@gmail.com</strong></p>
+                        <p class="mt-3"><strong>Phone:</strong> <span>+62 31-3984456</span></p>
+                        <p><strong>Email:</strong> <span>nurulishlahsdnu@gmail.com</span></p>
                     </div>
                     <div class="social-links d-flex mt-4">
                         <a href="https://www.tiktok.com/@sd.nu.nurul.ishla?_t=8qe8IxEwnwI&_r=1"><i
@@ -439,6 +510,7 @@
 
     <!-- Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
+
     <script>
     // Fungsi untuk mengubah visibilitas menu mobile
     function toggleMobileMenu() {
@@ -449,7 +521,63 @@
             mobileNav.style.display = "block";
         }
     }
+
+    // Fungsi untuk menyembunyikan navbar di mode portrait
+    function checkOrientation() {
+        var mobileNav = document.getElementById("mobile-nav");
+        if (window.innerHeight > window.innerWidth) { // Portrait mode
+            mobileNav.style.display = "none"; // Sembunyikan navbar
+        } else {
+            mobileNav.style.display = "none"; // Sembunyikan navbar di landscape
+        }
+    }
+
+    // Memeriksa orientasi saat halaman dimuat
+    window.onload = checkOrientation;
+
+    // Menambahkan event listener untuk mendeteksi perubahan ukuran jendela
+    window.addEventListener("resize", checkOrientation);
+
+    // Fungsi untuk menangani klik pada item menu
+    function handleMenuClick(event) {
+        // Mencegah aksi klik yang akan mengalihkan fokus ke elemen lain
+        event.stopPropagation();
+
+        // Ambil semua submenu
+        var allSubmenus = document.querySelectorAll("#mobile-nav ul ul");
+
+        // Cari submenu dari item yang diklik
+        var submenu = event.currentTarget.querySelector("ul");
+
+        // Jika submenu yang diklik ada
+        if (submenu) {
+            // Tutup semua submenu terlebih dahulu
+            allSubmenus.forEach(function(submenu) {
+                submenu.style.display = "none"; // Tutup semua submenu
+            });
+
+            // Jika submenu yang diklik tidak terbuka, buka submenu tersebut
+            if (submenu.style.display !== "block") {
+                submenu.style.display = "block"; // Buka submenu yang diklik
+            }
+        }
+    }
+
+    // Menambahkan event listener untuk setiap item menu
+    document.querySelectorAll("#mobile-nav ul > li").forEach(function(item) {
+        item.addEventListener("click", handleMenuClick);
+    });
+
+    // Menutup semua submenu jika klik di luar menu
+    document.addEventListener("click", function() {
+        var allSubmenus = document.querySelectorAll("#mobile-nav ul ul");
+        allSubmenus.forEach(function(submenu) {
+            submenu.style.display = "none"; // Tutup semua submenu
+        });
+    });
     </script>
+
+
 
 </body>
 

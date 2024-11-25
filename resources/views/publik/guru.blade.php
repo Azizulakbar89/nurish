@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>SD NURISH</title>
+    <title>PROFIL GURU - SD NURISH</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
 
     <!-- Favicons -->
-    <link href="{{asset('/assets/img/favicon.png')}}" rel="icon">
-    <link href="{{asset('/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <link href="{{asset('assets1/img/favicon.jpg')}}" rel="icon">
+    <link href="{{asset('assets1/img/apple-touch-icon.jpg')}}" rel="apple-touch-icon">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -38,42 +38,206 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
     <style>
-    /* Hide the regular nav menu on smaller screens */
-    @media (max-width: 2360px) {
+    /* Gaya umum untuk navbar mobile */
+    #mobile-nav {
+        display: none;
+        /* Sembunyikan navbar mobile secara default */
+    }
+
+    .mobile-nav-toggle {
+        display: inline-block;
+        cursor: pointer;
+        font-size: 1.5rem;
+    }
+
+    /* Gaya navbar desktop */
+    #navmenu {
+        display: block;
+        /* Tampilkan navbar desktop secara default */
+    }
+
+    /* Media query untuk tampilan mobile (max-width 1024px) */
+    @media (max-width: 1024px) {
         #navmenu {
             display: none;
+            /* Sembunyikan navbar desktop pada layar kecil */
         }
 
-        /* Show the mobile nav toggle */
-        .mobile-nav-toggle {
-            display: inline-block;
-            cursor: pointer;
-            font-size: 1.5rem;
-        }
-
-        /* Mobile nav menu */
         #mobile-nav {
-            display: none;
-            background: #f8f9fa;
-            padding: 1rem;
+            display: block;
+            /* Tampilkan navbar mobile */
+            background: #ffffff;
+            /* Warna latar belakang */
+            padding: 0.5rem;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            /* Pastikan di atas elemen lain */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         #mobile-nav ul {
             list-style: none;
             padding-left: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border: none;
+            /* Hapus border */
         }
 
         #mobile-nav ul li {
-            padding: 0.5rem 0;
+            padding: 10px 14px;
+            width: 100%;
+            border: none;
+            /* Hapus border */
         }
 
+        /* Dropdown di navbar mobile */
         #mobile-nav ul ul {
             display: none;
+            /* Sembunyikan submenu secara default */
         }
 
         #mobile-nav ul .dropdown:hover ul {
             display: block;
+            /* Tampilkan submenu saat hover */
+            padding-left: 10px;
         }
+
+    }
+
+    /* Media query untuk layar antara 1024px dan 1199px */
+    @media (min-width: 1020px) and (max-width: 1199px) {
+        #navmenu {
+            display: block;
+            /* Tampilkan navbar desktop */
+        }
+
+        #mobile-nav {
+            display: none;
+            /* Sembunyikan navbar mobile */
+        }
+
+        .navmenu ul {
+            display: flex;
+            list-style: none;
+            position: static;
+            padding: 10px 0;
+            margin: 0;
+            border-radius: 1px;
+            background-color: var(--nav-mobile-background-color);
+            border: none;
+            /* Hapus border */
+            overflow-y: auto;
+            transition: 0.3s;
+        }
+
+
+    }
+
+    /* Media query untuk layar desktop lebih besar dari 1199px */
+    @media (min-width: 1200px) {
+        #navmenu {
+            display: block;
+            /* Tampilkan navbar desktop */
+        }
+
+        #mobile-nav {
+            display: none;
+            /* Sembunyikan navbar mobile */
+        }
+    }
+
+    /* Untuk iPad (max-width: 1366px, orientation: portrait) */
+    @media (max-width: 1366px) and (orientation: portrait) {
+        #navmenu {
+            display: none;
+            /* Sembunyikan navbar desktop */
+        }
+
+        #mobile-nav {
+            display: block;
+            /* Tampilkan navbar mobile */
+        }
+    }
+
+    /* Untuk iPad (max-width: 1366px, orientation: landscape) */
+    @media (max-width: 1366px) and (orientation: landscape) {
+        #navmenu {
+            display: block;
+            /* Tampilkan navbar desktop */
+        }
+
+        #mobile-nav {
+            display: none;
+            /* Sembunyikan navbar mobile */
+        }
+    }
+
+    /* Gaya untuk footer */
+
+
+    .footer-top {
+        padding: 20px;
+        /* Padding untuk bagian atas footer */
+    }
+
+    .footer-about {
+        margin-bottom: 20px;
+        /* Margin bawah untuk footer-about */
+    }
+
+    .footer-contact p {
+        margin: 5px 0;
+        /* Margin untuk paragraf di footer contact */
+        color: black;
+        /* Pastikan warna teks di footer contact hitam */
+    }
+
+    .social-links a {
+        color: darkgreen;
+        /* Warna ikon sosial menjadi hitam */
+        margin-right: 15px;
+        /* Margin kanan untuk ikon sosial */
+    }
+
+    .social-links a:hover {
+        color: #ffc107;
+        /* Warna saat hover pada ikon sosial */
+    }
+
+    .social-links i {
+        font-size: 14px;
+        /* Mengatur ukuran ikon (opsional) */
+        color: darkgreen;
+    }
+
+    .copyright {
+        margin-top: 20px;
+        /* Margin atas untuk bagian copyright */
+        color: black;
+        /* Warna teks copyright menjadi hitam */
+    }
+
+    .credits a {
+        color: black;
+        /* Warna tautan di bagian credits menjadi hitam */
+    }
+
+    .home {
+        background-color: #f8f9fa;
+        /* Ganti dengan warna latar belakang yang diinginkan */
+    }
+
+    .content h4 {
+        font-size: 1.5rem;
+        /* Ukuran font untuk subjudul */
+        margin-top: 20px;
+        /* Jarak atas subjudul */
     }
     </style>
 
@@ -104,6 +268,7 @@
         <div class="branding d-flex align-items-center">
             <div class="container position-relative d-flex align-items-center justify-content-between">
                 <a href="/" class="logo d-flex align-items-center me-auto">
+                    <img src="{{asset('assets1/img/favicon.jpg')}}" alt="">
                     <h1 class="sitename">SD NU NURUL ISHLAH GRESIK</h1>
                 </a>
 
@@ -292,10 +457,69 @@
     <script src="{{asset('assets/js/main.js')}}"></script>
 
     <script>
+    // Fungsi untuk mengubah visibilitas menu mobile
     function toggleMobileMenu() {
-        const mobileNav = document.getElementById("mobile-nav");
-        mobileNav.style.display = (mobileNav.style.display === "block") ? "none" : "block";
+        var mobileNav = document.getElementById("mobile-nav");
+        if (mobileNav.style.display === "block") {
+            mobileNav.style.display = "none";
+        } else {
+            mobileNav.style.display = "block";
+        }
     }
+
+    // Fungsi untuk menyembunyikan navbar di mode portrait
+    function checkOrientation() {
+        var mobileNav = document.getElementById("mobile-nav");
+        if (window.innerHeight > window.innerWidth) { // Portrait mode
+            mobileNav.style.display = "none"; // Sembunyikan navbar
+        } else {
+            mobileNav.style.display = "none"; // Sembunyikan navbar di landscape
+        }
+    }
+
+    // Memeriksa orientasi saat halaman dimuat
+    window.onload = checkOrientation;
+
+    // Menambahkan event listener untuk mendeteksi perubahan ukuran jendela
+    window.addEventListener("resize", checkOrientation);
+
+    // Fungsi untuk menangani klik pada item menu
+    function handleMenuClick(event) {
+        // Mencegah aksi klik yang akan mengalihkan fokus ke elemen lain
+        event.stopPropagation();
+
+        // Ambil semua submenu
+        var allSubmenus = document.querySelectorAll("#mobile-nav ul ul");
+
+        // Cari submenu dari item yang diklik
+        var submenu = event.currentTarget.querySelector("ul");
+
+        // Jika submenu yang diklik ada
+        if (submenu) {
+            // Tutup semua submenu terlebih dahulu
+            allSubmenus.forEach(function(submenu) {
+                submenu.style.display = "none"; // Tutup semua submenu
+            });
+
+            // Jika submenu yang diklik tidak terbuka, buka submenu tersebut
+            if (submenu.style.display !== "block") {
+                submenu.style.display = "block"; // Buka submenu yang diklik
+            }
+        }
+    }
+
+    // Menambahkan event listener untuk setiap item menu
+    document.querySelectorAll("#mobile-nav ul > li").forEach(function(item) {
+        item.addEventListener("click", handleMenuClick);
+    });
+
+    // Menutup semua submenu jika klik di luar menu
+    document.addEventListener("click", function() {
+        var allSubmenus = document.querySelectorAll("#mobile-nav ul ul");
+        allSubmenus.forEach(function(submenu) {
+            submenu.style.display = "none"; // Tutup semua submenu
+        });
+    });
     </script>
 
 

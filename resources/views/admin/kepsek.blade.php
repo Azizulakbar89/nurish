@@ -13,44 +13,35 @@
         <div class="row">
 
             <form>
-                <div class="mb-3 d-flex justify-content-between align-items-center">
-                    <form action="{{ route('bok') }}" method="GET" class="d-flex">
-                        <input type="text" name="cari" placeholder="Cari Judul e-Book" class="form-control me-2">
-                        <button type="submit" class="btn btn-primary">Cari</button>
-                    </form>
-                    <a href="bok-add" class="btn btn-primary ms-0">Tambah Data e-Book</a>
-                    <!-- Added 'ms-3' for left margin -->
+                <div class="mb-3 d-flex align-items-center">
+                    <a href="kepsek-add" class="btn btn-primary ms-auto">Tambah Sambutan Kepala Sekolah</a>
                 </div>
                 <table class="table mt-3">
                     <thead>
                         <tr>
                             <th scope="col">ID</th>
-                            <th scope="col">Judul</th>
-                            <th scope="col">Kelas</th>
-                            <th scope="col">File</th>
+                            <th scope="col">Nama Kepala Sekolah</th>
+                            <th scope="col">Isi Sambutan</th>
+                            <th scope="col">Foto</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="table-group-divider">
-                        @foreach ($bok as $item)
+                        @foreach ($kepsek as $item)
                         <tr>
-                            <td>{{$loop->iteration}}</td>
-                            <td>{{$item->judul}}</td>
-                            <td>{{$item->kelas}}</td>
-                            <td>{{$item->dokumen}}</td>
+                            <td>{{$item->idk}}</td>
+                            <td>{{$item->namakep}}</td>
+                            <td>{{$item->sambutan}}</td>
+                            <td><img src="{{ asset('storage/gambar/'. $item->gambar) }}" alt="" width="120px"
+                                    height="60px"></td>
                             <td>
-                                <a href="/bok-edit/{{$item->idb}}"><i class='bi bi-pencil'></i></a>|
-                                <a href="/deletebok/{{$item->idb}}"><i class='bi bi-trash'></i></a>
+                                <a href="/kepsek-edit/{{$item->idk}}"><i class='bi bi-pencil'></i></a>|
+                                <a href="/deletekepsek/{{$item->idk}}"><i class='bi bi-trash'></i></a>
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
-
-                <!-- Kontrol Pagination -->
-                <div class="pagination">
-                    {{ $bok->links() }}
-                </div>
 
             </form>
 

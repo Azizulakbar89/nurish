@@ -12,6 +12,8 @@
 --------------------------------------------------------------*/
 /* Fonts */
 
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap");
+
 .pagination {
     justify-content: center; /* Center pagination */
 }
@@ -99,13 +101,28 @@ a:hover {
 }
 
 h1,
-h2,
+h2 {
+    color: var(--heading-color);
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto; /* Pastikan browser mendukung */
+    font-weight: 600; /* Semibold */
+    font-style: normal;
+    font-variation-settings: "wdth" 100; /* Sesuai pengaturan lebar */
+    font-size: 22px; /* Contoh ukuran font, sesuaikan dengan kebutuhan */
+    margin: 0; /* Reset margin jika diperlukan */
+}
 h3,
 h4,
 h5,
 h6 {
     color: var(--heading-color);
-    font-family: var(--heading-font);
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto; /* Pastikan browser mendukung */
+    font-weight: 400; /* Semibold */
+    font-style: normal;
+    font-variation-settings: "wdth" 100; /* Sesuai pengaturan lebar */
+    font-size: 20px; /* Contoh ukuran font, sesuaikan dengan kebutuhan */
+    margin: 0; /* Reset margin jika diperlukan */
 }
 
 /* Pulsating Play Button
@@ -398,8 +415,13 @@ h6 {
         color: var(--nav-color);
         font-size: 15px;
         padding: 0 2px;
-        font-family: var(--nav-font);
-        font-weight: 400;
+        color: var(--heading-color);
+        font-family: "Fredoka", sans-serif;
+        font-optical-sizing: auto; /* Pastikan browser mendukung */
+        font-weight: 400; /* Semibold */
+        font-style: normal;
+        font-variation-settings: "wdth" 100; /* Sesuai pengaturan lebar */
+        margin: 0; /* Reset margin jika diperlukan */
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -536,9 +558,13 @@ h6 {
     .navmenu a:focus {
         color: var(--nav-dropdown-color);
         padding: 10px 20px;
-        font-family: var(--nav-font);
+        font-family: "Fredoka", sans-serif;
+        font-optical-sizing: auto; /* Pastikan browser mendukung */
+        font-weight: 500; /* Semibold */
+        font-style: normal;
+        font-variation-settings: "wdth" 100; /* Sesuai pengaturan lebar */
+        margin: 0; /* Reset margin jika diperlukan */
         font-size: 17px;
-        font-weight: 500;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -658,15 +684,47 @@ h6 {
 
 .footer .footer-about .logo span {
     color: var(--heading-color);
-    font-family: var(--heading-font);
-    font-size: 26px;
-    font-weight: 700;
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto; /* Pastikan browser mendukung */
+    font-weight: 600; /* Semibold */
+    font-style: normal;
+    font-variation-settings: "wdth" 100; /* Sesuai pengaturan lebar */
+    font-size: 26px; /* Contoh ukuran font, sesuaikan dengan kebutuhan */
+    margin: 0; /* Reset margin jika diperlukan */
     letter-spacing: 1px;
+}
+
+.logo .text-container {
+    display: flex;
+    flex-direction: column; /* Agar caption berada di bawah judul */
+    align-items: flex-start; /* Rata kiri */
+    margin-left: 10px; /* Jarak dengan logo gambar */
+}
+
+.logo .sitename {
+    font-family: "Fredoka", sans-serif;
+    font-size: 24px;
+    font-weight: 700; /* Bold untuk judul */
+    margin: 0;
+    color: #333; /* Warna utama */
+}
+
+.logo .caption {
+    font-family: "Fredoka", sans-serif;
+    font-size: 16px; /* Ukuran lebih kecil untuk caption */
+    font-weight: 400; /* Regular untuk teks tambahan */
+    color: #666; /* Warna abu-abu lembut */
+    margin: 0; /* Hapus margin default */
 }
 
 .footer .footer-about p {
     font-size: 14px;
-    font-family: var(--heading-font);
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto; /* Pastikan browser mendukung */
+    font-weight: 400; /* Semibold */
+    font-style: normal;
+    font-variation-settings: "wdth" 200; /* Sesuai pengaturan lebar */
+    margin: 0; /* Reset margin jika diperlukan */
 }
 
 .footer .social-links a {
@@ -689,10 +747,15 @@ h6 {
 }
 
 .footer h4 {
-    font-size: 16px;
-    font-weight: bold;
     position: relative;
     padding-bottom: 12px;
+    font-family: "Fredoka", sans-serif;
+    font-optical-sizing: auto; /* Pastikan browser mendukung */
+    font-weight: 600; /* Semibold */
+    font-style: normal;
+    font-variation-settings: "wdth" 100; /* Sesuai pengaturan lebar */
+    font-size: 22px; /* Contoh ukuran font, sesuaikan dengan kebutuhan */
+    margin: 0; /* Reset margin jika diperlukan */
 }
 
 .footer .footer-links {
@@ -1829,4 +1892,31 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
     /* Add your styles here */
+}
+
+.chart-container {
+    display: flex;
+    justify-content: space-between;
+    /* Mengatur jarak antar chart */
+    flex-wrap: wrap;
+    /* Membuat chart bisa melipat jika layar kecil */
+    background-color: var(--background-color);
+}
+
+.chart {
+    flex: 1;
+    /* Membuat setiap chart memiliki lebar yang sama */
+    margin: 10px;
+    /* Jarak antar chart */
+    min-width: 300px;
+    /* Lebar minimum untuk setiap chart */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Bayangan untuk efek visual */
+    padding: 20px;
+    /* Padding di dalam chart */
+    border-radius: 8px;
+    /* Sudut melengkung */
+    background-color: #fff;
+    /* Warna latar belakang */
+    --default-color: #000000;
 }

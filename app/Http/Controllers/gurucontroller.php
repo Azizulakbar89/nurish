@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\guru;
 use App\Models\ebook;
 use App\Models\fokeg;
+use App\Models\kepsek;
 
 class gurucontroller extends Controller
 {
@@ -94,7 +95,7 @@ class gurucontroller extends Controller
         {
             // Validasi file yang di-upload
             $request->validate([
-                'dokumen' => 'required|file|mimes:pdf,docx,doc|max:20480', // Maksimal 2MB
+                'dokumen' => 'required|file|mimes:pdf,docx,doc,xlsx,csv|max:20480', // Maksimal 2MB
             ]);
     
             // Mendapatkan ekstensi file
@@ -131,32 +132,46 @@ class gurucontroller extends Controller
         return view('admin/bok-edit',['bok' => $bok]);
     }
 
-    public function updateb(Request $request, $idb){
-        // Validasi file yang di-upload
-        $request->validate([
-            'dokumen' => 'required|file|mimes:pdf,docx,doc|max:20480', // Maksimal 2MB
-        ]);
+    public function updateb(Request $request, $idb)
+    {
+    // Validasi input lainnya
+    $request->validate([
+        'judul' => 'required|string|max:255',
+        'kelas' => 'required|string|max:255',
+        'dokumen' => 'nullable|file|mimes:pdf,docx,doc,xlsx,csv|max:20480', // Maksimal 20MB
+    ]);
 
+    // Mendapatkan model ebook
+    $bok = ebook::find($idb);
+
+    // Menyimpan nama file yang lama
+    $filePath = $bok->dokumen;
+
+    // Memeriksa apakah ada file yang di-upload
+    if ($request->hasFile('dokumen')) {
         // Mendapatkan ekstensi file
         $extension = $request->file('dokumen')->getClientOriginalExtension();
 
         // Membuat nama file yang unik
-        $namaFile = $request->judul. now()->timestamp . '.' . $extension;
+        $namaFile = $request->judul . now()->timestamp . '.' . $extension;
 
         // Menyimpan file ke storage
         $request->file('dokumen')->storeAs('dokumen', $namaFile);
 
-        // Menyimpan path file ke dalam database
-        $bok = ebook::find($idb);
-        $bok->update([
-            'judul' => $request->input('judul'),
-            'kelas' => $request->input('kelas'),
-            'dokumen' => 'dokumen/' . $namaFile,
-        ]);
-
-        return redirect('bok')->with('status', 'Berhasil Ditambahkan');
+        // Menyimpan path file yang baru ke dalam database
+        $filePath = 'dokumen/' . $namaFile;
     }
 
+    // Memperbarui data di database
+    $bok->update([
+        'judul' => $request->input('judul'),
+        'kelas' => $request->input('kelas'),
+        'dokumen' => $filePath,
+    ]);
+
+    return redirect('bok')->with('status', 'Berhasil Diperbarui');
+    }
+    
     public function foto(Request $request)
     {
         if($request->has('cari')){
@@ -182,7 +197,7 @@ class gurucontroller extends Controller
         $newName = '';
         if($request->file('image')){
             $extension = $request->file('image')->getClientOriginalExtension();
-            $newName = $request->namafas.'-'.now()->timestamp.'.'.$extension;
+            $newName = $request->judulfo.'-'.now()->timestamp.'.'.$extension;
             $request->file('image')->storeAs('gambar', $newName);
         }
 
@@ -216,6 +231,69 @@ class gurucontroller extends Controller
         $fo = fokeg::where('idfo', $idfo)->first();
         $fo ->update($request->all());
         return redirect('fo')->with('status', 'Berhasil Diedit');
+
+    }
+
+
+    public function kepsek(Request $request)
+    {
+        if($request->has('cari')){
+            $kepsek = kepsek::where('nama','LIKE','%'.$request->cari.'%')->paginate(10);
+        }else{
+            $kepsek = kepsek::paginate(10);
+        }
+        return view('admin/kepsek', compact('kepsek'));
+    }
+
+    public function addkepsek()
+    {
+        return view('admin/kepsek-add');
+    }
+
+    public function storekepsek(Request $request)
+    {
+        $validated = $request->validate([
+            'namakep' => 'required',
+            'sambutan' => 'required'
+        ]);
+
+        $newName = '';
+        if($request->file('image')){
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $newName = $request->namakep.'-'.now()->timestamp.'.'.$extension;
+            $request->file('image')->storeAs('gambar', $newName);
+        }
+
+        $request['gambar'] = $newName;
+        $kepsek = kepsek::create($request->all());
+        return redirect('kepsek')->with('status', 'Berhasil Ditambahkan');
+    }
+
+    public function deletekepsek($idk)
+    {
+        $kepsek = kepsek::find($idk);
+        $kepsek->delete();
+        return redirect('kepsek')->with('status', 'Data Berhasil Dihapus');
+    }
+
+    public function editkepsek($idk)
+    {
+        $kepsek = kepsek::where('idk', $idk)->first();
+        return view('admin/kepsek-edit',['kepsek' => $kepsek]);
+    }
+
+    public function updatekepsek(Request $request, $idk){
+        if($request->file('image')){
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $newName = $request->namakep.'-'.now()->timestamp.'.'.$extension;
+            $request->file('image')->storeAs('gambar', $newName);
+            $request['gambar'] = $newName;
+        }
+
+        
+        $kepsek = kepsek::where('idk', $idk)->first();
+        $kepsek ->update($request->all());
+        return redirect('kepsek')->with('status', 'Berhasil Diedit');
 
     }
 }

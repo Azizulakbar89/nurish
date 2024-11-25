@@ -10,7 +10,12 @@ use App\Models\ekstra;
 use App\Models\video;
 use App\Models\guru;
 use App\Models\fokeg;
+use App\Models\kepsek;
 use App\Charts\PrestasiChart;
+use App\Charts\prestasi1;
+use App\Charts\pres;
+use App\Charts\ekstrak;
+use App\Charts\totalguru;
 use App\Helpers\BulanHelper;
 
 class admincontroller extends Controller
@@ -23,7 +28,7 @@ class admincontroller extends Controller
         $prestasicount = prestasi::count();
         $mitracount = mitra::count();
         return view('/admin/admin', $data, ['ecount'=>$ekstracount, 'gcount'=>$gurucount, 'mcount'=>$mitracount,
-         'pcount'=>$prestasicount]);
+         'pcount'=>$prestasicount, 'chart'=>$chart]);
     }
 
     public function fas(Request $request)
@@ -278,14 +283,32 @@ class admincontroller extends Controller
         return redirect('ekstra')->with('status', 'Berhasil Diedit');
     }
 
-    public function index(){
-        $fo = fokeg::orderBy('created_at', 'desc')->take(2)->get();
-        $ekstracount = ekstra::count();
-        $gurucount = guru::count();
-        $prestasicount = prestasi::count();
-        $mitracount = mitra::count();
-        return view('publik.welcome',['ecount'=>$ekstracount, 'gcount'=>$gurucount, 'mcount'=>$mitracount,
-         'pcount'=>$prestasicount, 'fo'=>$fo]);
-    }
+    public function index(totalguru $chart1,  ekstrak $chart3, pres $data)
+{
+    // Membangun chart
+    $chart1Data = $chart1->build();
 
+    $chart3Data = $chart3->build();
+    $data = $data->build();
+    // Mengambil data lainnya
+    $fo = Fokeg::orderBy('created_at', 'desc')->take(2)->get();
+    $kepsek = Kepsek::orderBy('created_at', 'desc')->take(1)->get();
+    $ekstracount = Ekstra::count();
+    $gurucount = Guru::count();
+    $prestasicount = Prestasi::count();
+    $mitracount = Mitra::count();
+
+    // Mengirim data ke view
+    return view('publik.welcome', [
+        'ecount' => $ekstracount,
+        'gcount' => $gurucount,
+        'mcount' => $mitracount,
+        'pcount' => $prestasicount,
+        'fo' => $fo,
+        'kepsek' => $kepsek,
+        'chart1' => $chart1Data, // Mengirim chart1Data ke view
+
+        'chart3' => $chart3Data,
+        'data' => $data
+    ]);}
 }

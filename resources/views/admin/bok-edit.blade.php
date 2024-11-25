@@ -4,6 +4,10 @@
 
 @section('content')
 
+<!-- Favicons -->
+<link href="{{asset('assets1/img/favicon.jpg')}}" rel="icon">
+<link href="{{asset('assets1/img/apple-touch-icon.jpg')}}" rel="apple-touch-icon">
+
 <main id="main" class="main">
     <section class="section dashboard">
         <div class="row">
@@ -20,14 +24,24 @@
                     </div>
                     <div class="mb-3">
                         <label for="kelas" class="form-label">Kelas</label>
-                        <input type="text" name="kelas" id="kelas" value="{{$bok->kelas}}" class="form-control"
+                        <input type="number" name="kelas" id="kelas" value="{{$bok->kelas}}" class="form-control"
                             placeholder="Isi Kelas e-Book">
                     </div>
                     <div class="mb-3">
                         <label for="dokumen" class="form-label">Dokumen</label>
-                        <input type="file" name="dokumen" id="dokumen" class="form-control @error('dokumen')
-                    is-invalid @enderror" value="{{$bok->dokumen}}" onchange="previewfile()">
+                        <input type="file" name="dokumen" id="dokumen"
+                            class="form-control @error('dokumen') is-invalid @enderror" onchange="previewfile()">
 
+                        @error('dokumen')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                        @enderror
+
+                        @if($bok->dokumen)
+                        <p>Dokumen saat ini: <a href="{{ asset('storage/dokumen/' . $bok->dokumen) }}"
+                                target="_blank">{{ basename($bok->dokumen) }}</a></p>
+                        @endif
                     </div>
 
                     <div>

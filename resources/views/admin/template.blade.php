@@ -5,14 +5,14 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title></title>
+    <title>NurishAdmin</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 
     <!-- Favicons -->
-    <link href="{{asset('assets1/img/favicon.png')}}" rel="icon">
-    <link href="{{asset('assets1/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <link href="{{asset('assets1/img/favicon.jpg')}}" rel="icon">
+    <link href="{{asset('assets1/img/apple-touch-icon.jpg')}}" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
@@ -48,7 +48,7 @@
 
         <div class="d-flex align-items-center justify-content-between">
             <a href="/admin " class="logo d-flex align-items-center">
-                <img src="{{asset('assets1/img/logo.png')}}" alt="">
+                <img src="{{asset('assets1/img/favicon.jpg')}}" alt="">
                 <span class="d-none d-lg-block">NurishAdmin</span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -97,6 +97,11 @@
                     <li>
                         <a href="/prestasi">
                             <i class="bi bi-circle"></i><span>Prestasi Siswa</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/kepsek">
+                            <i class="bi bi-circle"></i><span>Sambutan Kepala Sekolah</span>
                         </a>
                     </li>
 
@@ -171,7 +176,7 @@
             class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
-    <script src="{{asset('assets1/vendor/apexcharts/apexcharts.min.js')}}"></script>
+
     <script src="{{asset('assets1/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
     <script src="{{asset('assets1/vendor/chart.js')}}/chart.umd.js')}}"></script>
     <script src="{{asset('assets1/vendor/echarts/echarts.min.js')}}"></script>

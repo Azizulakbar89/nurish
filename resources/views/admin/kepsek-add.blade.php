@@ -14,25 +14,22 @@
 
             <div class="mt-5">
 
-                <form action="/fo-edit/{{$fo->idfo}}" method="post" enctype="multipart/form-data">
+                <form action="kepsek-add" method="post" enctype="multipart/form-data">
                     @csrf
-                    @method('put')
                     <div class="mb-3">
-                        <label for="judulfo" class="form-label">Judul Foto</label>
-                        <input type="text" name="judulfo" id="judulfo" value="{{$fo->judulfo}}" class="form-control"
-                            placeholder="Isi Judul Foto">
+                        <label for="namakep" class="form-label">Nama Kepala Sekolah</label>
+                        <input type="text" name="namakep" id="namakep" class="form-control"
+                            placeholder="Nama Kepala Sekolah">
                     </div>
                     <div class="mb-3">
-                        <label for="deskripsi" class="form-label">Deskripsi</label>
-                        <input type="text" name="deskripsi" id="deskripsi" value="{{$fo->deskripsi}}"
-                            class="form-control" placeholder="Isi Deskripsi">
+                        <label for="sambutan" class="form-label">Isi Sambutan</label>
+                        <input type="text" name="sambutan" id="sambutan" class="form-control"
+                            placeholder="Isi Sambutan">
                     </div>
                     <div class="mb-3">
-                        <label for="image" class="form-label">Gambar Kegiatan</label>
+                        <label for="image" class="form-label">Gambar Kepala Sekolah</label>
                         <input type="file" name="image" id="img" class="form-control @error('image')
-                    is-invalid @enderror" value="{{ asset('storage/gambar/'. $fo->gambar) }}"
-                            onchange="previewImage()">
-                        <img src="{{ asset('storage/gambar/'. $fo->gambar) }}" alt="" width="120px" height="60px">
+                    is-invalid @enderror" value="{{ old('image') }}" onchange="previewImage()">
 
                         <img class="img-preview img-fluid mb-3 col-sm-7">
                         @error('image')

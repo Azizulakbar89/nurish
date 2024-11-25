@@ -4,59 +4,66 @@
 
 @section('content')
 
+<!-- Favicons -->
+<link href="{{asset('assets1/img/favicon.jpg')}}" rel="icon">
+<link href="{{asset('assets1/img/apple-touch-icon.jpg')}}" rel="apple-touch-icon">
+
 <main id="main" class="main">
     <section class="section dashboard">
-      <div class="row">
+        <div class="row">
 
-      <div class="mt-5">
+            <div class="mt-5">
 
-        <form action="keg-add" method="post" enctype="multipart/form-data">
-            @csrf
-            <div class="mb-3">
-                <label for="judul" class="form-label">Judul</label>
-                <input type="text" name="judul" id="judul" class="form-control" placeholder="Isi Nama Judul Kegiatan" >
-            </div>
-            <div class="mb-3">
-                <label for="deskripsi" class="form-label">Deskripsi</label>
-                <input type="text" name="deskripsi" id="deskripsi" class="form-control" placeholder="Isi Deskripsi Kegiatan" >
-            </div>
-            <div class="mb-3">
-                <label for="tgl" class="form-label">Tanggal</label>
-                <input type="date" name="tgl" id="tgl" class="form-control" placeholder="Isi Tanggal" >
-            </div>
-            <div class="mb-3">
-                <label for="link" class="form-label">Link</label>
-                <input type="text" name="link" id="link" class="form-control" placeholder="Isi Link Berdasarkan Akhir '/' Pada Link Youtube dan Sebelum tanda '='" >
-            </div>
-            <div>
-                <button class="btn btn-success mt-3" type="submit">Simpan</button>
-            </div>
+                <form action="keg-add" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3">
+                        <label for="judul" class="form-label">Judul</label>
+                        <input type="text" name="judul" id="judul" class="form-control"
+                            placeholder="Isi Nama Judul Kegiatan">
+                    </div>
+                    <div class="mb-3">
+                        <label for="deskripsi" class="form-label">Deskripsi</label>
+                        <input type="text" name="deskripsi" id="deskripsi" class="form-control"
+                            placeholder="Isi Deskripsi Kegiatan">
+                    </div>
+                    <div class="mb-3">
+                        <label for="tgl" class="form-label">Tanggal</label>
+                        <input type="date" name="tgl" id="tgl" class="form-control" placeholder="Isi Tanggal">
+                    </div>
+                    <div class="mb-3">
+                        <label for="link" class="form-label">Link</label>
+                        <input type="text" name="link" id="link" class="form-control"
+                            placeholder="Isi Link Berdasarkan Akhir '/' Pada Link Youtube dan Sebelum tanda '='">
+                    </div>
+                    <div>
+                        <button class="btn btn-success mt-3" type="submit">Simpan</button>
+                    </div>
 
-        </div>
+            </div>
     </section>
 
-  </main><!-- End #main -->
+</main><!-- End #main -->
 
-  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js "></script>
 <script>
 $(document).ready(function() {
     $('.select-multiple').select2();
 });
-function previewImage()
-{
-    const img = document.querySelector("#img");
-      const imgPreview = document.querySelector(".img-preview")
 
-      imgPreview.style.display = 'block';
+function previewImage() {
+    const img = document.querySelector("#img");
+    const imgPreview = document.querySelector(".img-preview")
+
+    imgPreview.style.display = 'block';
     //   imgPreview.style.marginTop = '5px';
     //   imgPreview.style.width = '100px';
     //   imgPreview.style.height = '60px';
-      const reader = new FileReader();
-      reader.readAsDataURL(img.files[0]);
-      reader.onload = function(event) {
+    const reader = new FileReader();
+    reader.readAsDataURL(img.files[0]);
+    reader.onload = function(event) {
 
-         imgPreview.src = event.target.result;
-      }
+        imgPreview.src = event.target.result;
+    }
 }
 </script>

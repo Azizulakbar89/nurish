@@ -4,6 +4,10 @@
 
 @section('content')
 
+<!-- Favicons -->
+<link href="{{asset('assets1/img/favicon.jpg')}}" rel="icon">
+<link href="{{asset('assets1/img/apple-touch-icon.jpg')}}" rel="apple-touch-icon">
+
 <main id="main" class="main">
     <section class="section dashboard">
         <div class="row">
@@ -20,7 +24,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="kelas" class="form-label">Rubah Kelas</label>
-                        <input type="text" name="kelas" id="kelas" value="{{$vide->kelas}}" class="form-control"
+                        <input type="number" name="kelas" id="kelas" value="{{$vide->kelas}}" class="form-control"
                             placeholder="Isi Kelas">
                     </div>
                     <div class="mb-3">

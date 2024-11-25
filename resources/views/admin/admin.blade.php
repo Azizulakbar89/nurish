@@ -4,6 +4,10 @@
 
 @section('content')
 
+<!-- Favicons -->
+<link href="{{asset('assets1/img/favicon.jpg')}}" rel="icon">
+<link href="{{asset('assets1/img/apple-touch-icon.jpg')}}" rel="apple-touch-icon">
+
 <main id="main" class="main">
 
     <div class="pagetitle">
@@ -75,7 +79,10 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">Grafik Prestasi</h5>
-                        {!! $chart->container() !!}
+                        <div id="chart-container" style="height: 500px; width: 100%;">
+                            <!-- Kontainer untuk grafik -->
+                            {!! $chart->container() !!}
+                        </div>
                     </div>
                 </div>
             </div><!-- End Reports -->
@@ -85,5 +92,39 @@
 
     <script src="{{ $chart->cdn() }}"></script>
     {{ $chart->script() }}
+
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inisialisasi grafik jika perlu
+        var chart = new ApexCharts(document.querySelector("#chart-container"), {
+            // Konfigurasi grafik Anda di sini
+            chart: {
+                type: 'line',
+                height: 500,
+                width: '100%',
+                redrawOnParentResize: true // Pastikan grafik di-redraw saat ukuran parent berubah
+            },
+            series: [{
+                name: 'Total Prestasi',
+                data: {
+                    !!json_encode($chart - > getData()) !!
+                } // Ambil data dari grafik
+            }],
+            xaxis: {
+                categories: {
+                    !!json_encode($chart - > getXAxis()) !!
+                } // Ambil kategori dari grafik
+            }
+        });
+
+        chart.render();
+
+        // Menangani resize untuk memastikan grafik tetap responsif
+        window.addEventListener('resize', function() {
+            chart.resize();
+        });
+    });
+    </script>
 
 </main><!-- End #main -->

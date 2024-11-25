@@ -234,6 +234,17 @@ h6 {
     border-color: #d3d3d4;
 }
 
+#chart-container {
+    height: 500px; /* Atur tinggi kontainer grafik */
+    width: 100%; /* Pastikan lebar kontainer 100% */
+    position: relative; /* Memastikan posisi relatif untuk kontainer */
+    overflow: hidden; /* Menghindari scroll di dalam kontainer */
+}
+
+.card {
+    overflow: hidden; /* Menghindari scroll di dalam card */
+}
+
 /* Card */
 .card {
     margin-bottom: 30px;

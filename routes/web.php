@@ -93,6 +93,13 @@ Route::group(['middleware'=>['auth']], function(){
     Route::get('fo-edit/{idfo}', [gurucontroller::class, 'editf'])->name('editf');
     Route::put('fo-edit/{idfo}', [gurucontroller::class, 'updatef']);
     Route::get('/deletefo/{idfo}', [gurucontroller::class, 'deletefo'])->name('delete');
+
+    Route::get('kepsek', [guruController::class, 'kepsek'])->name('kepsek');
+    Route::get('kepsek-add', [guruController::class, 'addkepsek']); 
+    Route::post('kepsek-add', [guruController::class, 'storekepsek']);
+    Route::get('kepsek-edit/{idk}', [gurucontroller::class, 'editkepsek'])->name('editkepsek');
+    Route::put('kepsek-edit/{idk}', [gurucontroller::class, 'updatekepsek']);
+    Route::get('/deletekepsek/{idk}', [gurucontroller::class, 'deletekepsek'])->name('deletekepsek');
     
 });
 
